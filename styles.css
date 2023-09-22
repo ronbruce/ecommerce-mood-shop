@@ -1,0 +1,23 @@
+body {
+    list-style: 1.5;
+    font-family: 'Helvetica';
+    font-size: 16px;
+    margin: 0;
+}
+
+/* The nav and ul list are all nested in the header */
+/* This makes them easy to flex and add style */
+/* In order to add flex-direction on the ul, I needed to select it */
+.page-header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: bisque;
+    list-style: none;
+}
+
+.page-header a {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+}
