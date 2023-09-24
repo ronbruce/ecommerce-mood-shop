@@ -12,7 +12,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: bisque;
+    /* background-color: bisque; */
     list-style: none;
 }
 
@@ -20,4 +20,11 @@ body {
     display: block;
     padding: 0.5em;
     text-decoration: none;
+}
+
+/* Stretch challenge */
+.page-header nav {
+    background-color: rgb(255, 0, 204);   
+    font-size:large;
+    font-family: 'Times New Roman', Times, serif;
 }
