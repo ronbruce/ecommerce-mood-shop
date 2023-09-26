@@ -5,7 +5,7 @@ const itemsContainer = document.querySelector('#items');
 for (let i = 0; i < data.length; i += 1) {
     // As I loop through the data, I am creating a div element and giving it a class name items.
     const newDiv = document.createElement('div');
-    newDiv.className = 'items'
+    newDiv.className = 'item'
     // Same thing happening here, except I am iterating over images in my data and actually assigning it some attributes. 
     const img = document.createElement('img');
     img.src = data[i].image
