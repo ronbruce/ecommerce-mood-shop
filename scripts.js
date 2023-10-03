@@ -1,6 +1,19 @@
 import data from './data.js'
 
+const itemList = document.getElementById('item-list')
+itemList.innerHTML = '<li> Hello World</li>'
+const cartQty = document.getElementById('cart-qty')
+cartQty.innerHTML = 'Hey'
+const cartTotal = document.getElementById('cart-total') 
+cartTotal.innerHTML = 'No'
+
+
+
+
 const itemsContainer = document.querySelector('#items');
+
+
+
 
 for (let i = 0; i < data.length; i += 1) {
     // As I loop through the data, I am creating a div element and giving it a class name items.
@@ -29,4 +42,107 @@ for (let i = 0; i < data.length; i += 1) {
     newDiv.appendChild(button)
     // Now we will render everything we created above to the browser! 
     itemsContainer.appendChild(newDiv)
+    // Buttons
+    const all_items_button = Array.from(document.querySelectorAll('button'));
+    console.log(all_items_button)
+
+    all_items_button.forEach(elt => elt.addEventListener('click', () => {
+        addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
+        showItems()
+      }))
+
 }
+
+// Shopping cart
+
+
+console.log(itemList)
+// This is my shopping cart for adding items.
+const cart = []
+// I created a function to help me add items to my cart
+function addItem(name, price) {
+   // Upadate my cart each time I add a duplicate item. 
+    for (let i = 0; i < cart.length; i += 1) {
+        if (cart[i].name === name) {
+            cart[i].qty += 1
+            return
+        }
+    }
+     // This item object will allow my addItem function to be more flexible. I can invoke any type of new item or price and add to my cart.
+    const item = {name, price, qty:1}
+    // I'll use this push() to add items to my cart
+    cart.push(item)
+   
+
+}
+// Show items helps me display items in my shopping cart so I can view them when added.
+function showItems() {
+    const qty = getQty()
+    cartQty.innerHTML = `You have ${qty} items in your cart.`
+    // This is a different way to get my items by looping over them. 
+    let itemStr = ''
+    for (let i = 0; i < cart.length; i++) {
+        // console.log(`-${cart[i].name} $${cart[i].price} x ${cart[i].qty}`)
+        // const name = cart[i].name
+        // const price = cart[i].price
+        // const qty = cart[i].qty
+        const { name, price, qty } = cart[i]
+        
+        itemStr += `<li>${name} $${price} x ${qty} = ${qty * price}</li>`
+        }
+        itemList.innerHTML = itemStr
+    
+        const totalPrice = getTotal()
+        cartTotal.innerHTML = `The total price is $${totalPrice}`
+    }
+// Gets my total
+function getTotal() {
+    let total = 0
+    for (let i = 0; i < cart.length; i++) {
+        total += cart[i].price * cart[i].qty
+    }
+    return total.toFixed(2)
+
+}
+// Get my quantity 
+function getQty() {
+    let qty = 0
+    for (let i = 0; i < cart.length; i++) {
+        qty += cart[i].qty
+      
+        }
+    return qty
+}
+
+function removeItem(name, qty = 0) {
+    for (let i = 0; i < cart.length; i += 1) {
+        if (cart[i].name === name) {
+            if (qty > 0) {
+                cart[i].qty -= 1
+            }
+            if (cart[i].qty < 1 || qty === 0) {
+            cart.splice(i, 1)
+            }
+           return
+
+        }
+
+    }
+  
+}
+
+
+// addItem('Apple', 0.99)
+// addItem('Orange', 1.29)
+// addItem('Yugioh cards', 4.29)
+// addItem('Yugioh cards', 4.29)
+// addItem('Taffi', 6.99)
+// addItem('Taffi', 6.99)
+// addItem('FF16', 60.99)
+addItem()
+removeItem()
+getTotal()
+getQty()
+showItems()
+
+
