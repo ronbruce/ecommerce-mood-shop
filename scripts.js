@@ -7,13 +7,7 @@ cartQty.innerHTML = 'Hey'
 const cartTotal = document.getElementById('cart-total') 
 cartTotal.innerHTML = 'No'
 
-
-
-
 const itemsContainer = document.querySelector('#items');
-
-
-
 
 for (let i = 0; i < data.length; i += 1) {
     // As I loop through the data, I am creating a div element and giving it a class name items.
@@ -40,21 +34,18 @@ for (let i = 0; i < data.length; i += 1) {
     button.dataset.price = data[i].price
     button.innerHTML = 'Add to Cart'
     newDiv.appendChild(button)
-    // Now we will render everything we created above to the browser! 
-    itemsContainer.appendChild(newDiv)
-    // Buttons
-    const all_items_button = Array.from(document.querySelectorAll('button'));
-    console.log(all_items_button)
-
-    all_items_button.forEach(elt => elt.addEventListener('click', () => {
-        addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
+    
+    // Add event listener to the button 
+    button.addEventListener('click', () => {
+        addItem(button.getAttribute('id'), button.getAttribute('date-price'))
         showItems()
-      }))
-
+    
+    })
+    
+    itemsContainer.appendChild(newDiv)
 }
 
 // Shopping cart
-
 
 console.log(itemList)
 // This is my shopping cart for adding items.
@@ -72,8 +63,6 @@ function addItem(name, price) {
     const item = {name, price, qty:1}
     // I'll use this push() to add items to my cart
     cart.push(item)
-   
-
 }
 // Show items helps me display items in my shopping cart so I can view them when added.
 function showItems() {
@@ -146,3 +135,8 @@ getQty()
 showItems()
 
 
+// {/* <button class="remove" data-name"${name}">Remove</button>
+// <button class="add-one" data-name"${name}"> + </button>
+// <button class="remove-one" data-name"${name}"> - </button>
+// <input class="update" type="number" data-name="${name}">
+// </li> */}
