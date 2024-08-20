@@ -37,7 +37,7 @@ for (let i = 0; i < data.length; i += 1) {
     
     // Add event listener to the button 
     button.addEventListener('click', () => {
-        addItem(button.getAttribute('id'), button.getAttribute('date-price'))
+        addItem(button.getAttribute('id'), button.getAttribute('data-price'))
         showItems()
     
     })
