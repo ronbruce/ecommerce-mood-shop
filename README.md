@@ -1,31 +1,43 @@
-Ecommerce Mood App Documentation 
+# Ecommerce Mood App Documentation
 
-Overview:
-The E-commerce Mood App is a web application that allows users to browse and purchase products. It features a dynamic product display, shopping cart functionality, and basic calculations for item quantity and total price.
+## Overview
+The E-commerce Mood App is a web application designed to allow users to browse and purchase products. Key features include:
+- Dynamic product display
+- Shopping cart functionality
+- Basic calculations for item quantity and total price
 
-Modules:
-Product Display: Handles the rendering of products from the provided data.
+## Modules
 
-Shopping Cart: Manages cart items, quantities, and total calculations.
+### Product Display
+Responsible for rendering products based on the provided data.
 
-Functions:
-addItem(name, price): Adds a product to the shopping cart.
+### Shopping Cart
+Handles cart items, including their quantities and total price calculations.
 
-showItems(): Updates the display of items in the shopping cart.
+## Functions
 
-getTotal(): Calculates the total price of items in the cart.
+- **addItem(name, price)**: Adds a product to the shopping cart.
+- **showItems()**: Updates the display to reflect the current items in the shopping cart.
+- **getTotal()**: Calculates and returns the total price of items in the cart.
+- **getQty()**: Calculates and returns the total quantity of items in the cart.
+- **removeItem(name, qty)**: Removes or reduces the quantity of a specific product in the cart.
 
-getQty(): Calculates the total quantity of items in the cart.
+## Data Structures
 
-removeItem(name, qty): Removes or reduces the quantity of a product in the cart.
+- **data**: An array of product objects. Each object contains:
+  - `image`: URL or path to the product image
+  - `desc`: Description of the product
+  - `price`: Price of the product
+  - `name`: Name of the product
 
-Data Structures:
-data: An array of objects representing products, each with properties for image, desc, price, and name.
+- **cart**: An array of cart item objects. Each object contains:
+  - `name`: Name of the product
+  - `price`: Price of the product
+  - `qty`: Quantity of the product in the cart
 
-cart: An array of objects representing cart items, each with properties for name, price, and qty.
+## Usage
+User interactions with the product display elements drive the app’s core functionality. Clicking the "Add to Cart" button triggers the `addItem` function, which updates the cart and refreshes the display to show the current items.
 
-Usage: The app's core functionality is driven by user interactions with product display elements. Clicking the "Add to Cart" button triggers the addItem function, updating the cart and displaying changes.
-
-Known Issues:
-Currently, the app lacks features for removing individual items from the cart.
-Error handling for invalid user inputs is not implemented.
+## Known Issues
+- The app currently lacks functionality for removing individual items from the cart.
+- Error handling for invalid user inputs is not implemented.
